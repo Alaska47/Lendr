@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:williamchart="http://schemas.android.com/apk/res-auto">
+
+    <com.db.chart.view.LineChartView
+        android:id="@+id/card_chart"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@id/card_chart"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"/>
+
+    <TextView
+        android:layout_below="@id/divider"
+        android:id="@+id/card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text=""/>
+
+</RelativeLayout>

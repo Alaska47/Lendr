@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SignInActivity">
-
+        </activity>
+        <activity android:name=".activities.NavigationActivity">
         </activity>
     </application>
 

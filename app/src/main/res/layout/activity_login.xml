@@ -71,6 +71,7 @@
                 android:textColorHint="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
+        <!--
         <Button
             android:id="@+id/sign_in"
             android:backgroundTint="@color/colorPrimaryLight"
@@ -83,6 +84,23 @@
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:text="LOGIN"/>
+        -->
+
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+            android:id="@+id/sign_in"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_default"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:layout_height="wrap_content"
+            app:spinning_bar_color="#FFFFFFFF"
+            android:layout_marginTop="15dp"
+            app:spinning_bar_padding="8dp"
+            app:spinning_bar_width="3dp"
+            app:initialCornerAngle="50dp"
+            app:finalCornerAngle="50dp"
+            android:text="LOGIN"
+            android:textColor="@android:color/white"
+            />
 
         <Button
             android:id="@+id/switch_sign_in"

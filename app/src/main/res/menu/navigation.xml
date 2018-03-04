@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_charts_24dp"
+        android:title="Dashboard"/>
+
+    <item
+        android:id="@+id/navigation_loans"
+        android:icon="@drawable/ic_list_white_24dp"
+        android:title="Loans"/>
+
+    <item
+        android:id="@+id/navigation_browse"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="Browse"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_white_24dp"
+        android:title="Profile"/>
+
+</menu>
