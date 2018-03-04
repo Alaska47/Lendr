@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:williamchart="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ImageView
+        android:id="@+id/star_color"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/ic_star_white_24dp"
+        android:tint="#56CCF2"/>
+
+    <ImageView
+        android:id="@+id/star_color1"
+        android:visibility="gone"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/ic_star_white_24dp"
+        android:tint="#9B51E0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loan_title"
+        android:text="Loan Title"
+        android:textSize="24sp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:id="@+id/progressbar_layout"
+        android:layout_below="@id/loan_title"
+        android:layout_marginTop="26dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="50"/>
+
+        <TextView
+            android:id="@+id/progress_info"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="50%"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@id/progressbar_layout"
+        android:id="@+id/card_mini_description"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp"
+        android:text="Risk"/>
+
+</RelativeLayout>

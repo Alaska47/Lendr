@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity {
     private FirebaseAuth mAuth;
 
     private CircularProgressButton btn;
-    EditText username;
+    EditText email;
     EditText password;
 
     @Override
@@ -45,10 +45,12 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mAuth = FirebaseAuth.getInstance();
+
         TextView logoTitle = findViewById(R.id.logo_title);
         logoTitle.setTypeface(fontManager.getTypeFaceRegular());
 
-        username = (EditText) findViewById(R.id.input_username);
+        email = (EditText) findViewById(R.id.input_username);
         password = (EditText) findViewById(R.id.input_password);
 
         btn = (CircularProgressButton) findViewById(R.id.sign_in);
@@ -56,9 +58,14 @@ public class LoginActivity extends BaseActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!validate()) {
+                    Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 btn.startAnimation();
                 btn.setEnabled(false);
-                mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
+                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -117,6 +124,35 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null) {
+            FirebaseAuth.getInstance().getCurrentUser().getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
+                @Override
+                public void onSuccess(GetTokenResult result) {
+                    Log.d("DataStorage", result.getToken());
+                    final String idToken = result.getToken();
+                    BackendUtils.doPostRequest("/api/v1/login", new HashMap<String, String>() {{
+                        put("auth_token", idToken);
+                    }}, new VolleyCallback() {
+                        @Override
+                        public void onSuccess(String result) {
+                            Log.d(TAG, result);
+                        }
+
+                        @Override
+                        public void onError(VolleyError error) {
+                        }
+                    }, getApplicationContext());
+                }
+            });
+        }
+        updateUI(currentUser);
+    }
+
     public void updateUI(FirebaseUser currUser) {
         if(currUser != null) {
             Intent intent = new Intent(getApplicationContext(), NavigationActivity.class);
@@ -127,6 +163,29 @@ public class LoginActivity extends BaseActivity {
             btn.revertAnimation();
             Toast.makeText(this, "Failed login...", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String username = this.email.getText().toString();
+        String password = this.password.getText().toString();
+
+        if (username.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+            this.email.setError("enter a valid email address");
+            valid = false;
+        } else {
+            this.email.setError(null);
+        }
+
+        if (password.isEmpty() || password.length() < 4) {
+            this.password.setError("password too short");
+            valid = false;
+        } else {
+            this.password.setError(null);
+        }
+
+        return valid;
     }
 
     @Override

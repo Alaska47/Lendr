@@ -1,19 +1,54 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:williamchart="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:williamchart="http://schemas.android.com/apk/res-auto"
+    >
 
-    <com.db.chart.view.LineChartView
-        android:id="@+id/card_chart"
+
+
+    <LinearLayout
+        android:id="@+id/chart_layout"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/simple_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="YOLO"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:textSize="34sp"/>
+
+        <TextView
+            android:id="@+id/scrub_info_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text=""/>
+
+        <com.robinhood.spark.SparkView
+            android:id="@+id/card_chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:spark_lineColor="@color/colorPrimary"
+            app:spark_scrubEnabled="true"/>
+
+    </LinearLayout>
+
+
 
     <View
         android:id="@+id/divider"
-        android:layout_below="@id/card_chart"
+        android:layout_below="@id/chart_layout"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="?android:attr/listDivider"/>

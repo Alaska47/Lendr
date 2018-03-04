@@ -1,6 +1,7 @@
 package com.akotnana.lendr.activities;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.akotnana.lendr.R;
@@ -21,6 +23,7 @@ import com.akotnana.lendr.fragments.DashboardFragment;
 import com.akotnana.lendr.fragments.LoansFragment;
 import com.akotnana.lendr.fragments.ProfileFragment;
 import com.akotnana.lendr.utils.BottomNavigationViewHelper;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class NavigationActivity extends BaseActivity {
 
@@ -35,6 +38,27 @@ public class NavigationActivity extends BaseActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title1);
+
+        ImageButton newLoanRequest = (ImageButton) findViewById(R.id.new_loan_request);
+        newLoanRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        ImageButton powerOff = (ImageButton) findViewById(R.id.log_out);
+        powerOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return;
+            }
+        });
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

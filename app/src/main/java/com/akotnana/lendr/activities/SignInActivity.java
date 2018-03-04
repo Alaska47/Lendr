@@ -43,8 +43,8 @@ public class SignInActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private CircularProgressButton btn;
 
-    EditText fullname;
     EditText username;
+    EditText email;
     EditText password;
 
     @Override
@@ -57,8 +57,8 @@ public class SignInActivity extends BaseActivity {
         TextView logoTitle = findViewById(R.id.logo_title);
         logoTitle.setTypeface(fontManager.getTypeFaceRegular());
 
-        fullname = (EditText) findViewById(R.id.input_name);
-        username = (EditText) findViewById(R.id.input_username);
+        username = (EditText) findViewById(R.id.input_name);
+        email = (EditText) findViewById(R.id.input_username);
         password = (EditText) findViewById(R.id.input_password);
 
         btn = (CircularProgressButton) findViewById(R.id.sign_in);
@@ -74,10 +74,15 @@ public class SignInActivity extends BaseActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!validate()) {
+                    Toast.makeText(SignInActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 btn.startAnimation();
                 btn.setEnabled(false);
 
-                mAuth.createUserWithEmailAndPassword(username.getText().toString(), password.getText().toString())
+                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -190,5 +195,36 @@ public class SignInActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         btn.dispose();
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String username = this.username.getText().toString();
+        String email = this.email.getText().toString();
+        String password = this.password.getText().toString();
+
+        if (username.isEmpty()) {
+            this.username.setError("enter a valid username");
+            valid = false;
+        } else {
+            this.username.setError(null);
+        }
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            this.email.setError("enter a valid email address");
+            valid = false;
+        } else {
+            this.email.setError(null);
+        }
+
+        if (password.isEmpty() || password.length() < 4) {
+            this.password.setError("password too short");
+            valid = false;
+        } else {
+            this.password.setError(null);
+        }
+
+        return valid;
     }
 }

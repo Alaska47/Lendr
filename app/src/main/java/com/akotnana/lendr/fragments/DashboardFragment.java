@@ -23,7 +23,6 @@ import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 
 public class DashboardFragment extends Fragment {
 
-    private final String[] testLabels = {"Jan", "Fev", "Mar", "Apr", "Jun", "May", "Jul", "Aug", "Sep"};
     private final float[] testValues = {3.5f, 4.7f, 4.3f, 8f, 6.5f, 9.9f, 7f, 8.3f, 7.0f};
     private ArrayList<Card> cards = new ArrayList<>();
 
@@ -41,9 +40,9 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dashboard_fragment, container, false);
-        for(int i = 0; i < 3; i++) {
-            addCard("Testing 123", testLabels, testValues);
-        }
+        addCard("Investment Cash Inflow", testValues, true);
+        addCard("Credit Rating over Time", testValues, false);
+        addCard("Number of loans in progress", 10);
 
         CardArrayRecyclerViewAdapter mCardArrayAdapter = new CardArrayRecyclerViewAdapter(getActivity(), cards);
 
@@ -60,8 +59,15 @@ public class DashboardFragment extends Fragment {
         return v;
     }
 
-    public void addCard(String title, String[] labels, float[] values) {
-        Card card = new DashboardCard(getContext(), title, labels, values);
+    public void addCard(String title, float[] values, boolean dollar) {
+        Card card = new DashboardCard(getContext(), title, values);
+        ((DashboardCard) card).setDollarSign(dollar);
+        card.setCardElevation(getResources().getDimension(R.dimen.carddemo_shadow_elevation));
+        //card.setBackgroundColorResourceId(R.color.colorPrimary);
+        cards.add(card);
+    }
+    public void addCard(String title, int simpleNum) {
+        Card card = new DashboardCard(getContext(), title, simpleNum);
         card.setCardElevation(getResources().getDimension(R.dimen.carddemo_shadow_elevation));
         //card.setBackgroundColorResourceId(R.color.colorPrimary);
         cards.add(card);

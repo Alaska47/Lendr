@@ -12,7 +12,7 @@
     <include
         layout="@layout/toolbar"
         android:layout_weight="0"
-        android:layout_marginBottom="-7dp"
+        android:layout_marginBottom="-6.5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
