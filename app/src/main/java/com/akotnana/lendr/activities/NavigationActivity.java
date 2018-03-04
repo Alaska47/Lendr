@@ -47,6 +47,7 @@ public class NavigationActivity extends BaseActivity {
             }
         });
 
+        /*
         ImageButton powerOff = (ImageButton) findViewById(R.id.log_out);
         powerOff.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,7 @@ public class NavigationActivity extends BaseActivity {
                 return;
             }
         });
+        */
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

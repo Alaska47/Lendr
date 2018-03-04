@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="16dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+
+        android:text="Help for Electric Bill"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="5"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/investors_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13 Investors"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/risk_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Risk Rating: 560"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/interest_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Interest Rate: 3%"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/term_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Term: 5 months"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/total_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Value: $500"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <!-- Password Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:theme="@style/TextLabelGrey">
+
+                <EditText
+                    android:id="@+id/input_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_favorite_white_24dp"
+                    android:drawableTint="@color/grey_500"
+                    android:hint="Amount"
+                    android:inputType="text"
+                    android:textColor="@color/grey_500"
+                    android:textColorHint="@color/grey_500" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

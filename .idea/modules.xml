@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lendr.iml" filepath="$PROJECT_DIR$/Lendr.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/segmented-tab/segmented-tab.iml" filepath="$PROJECT_DIR$/segmented-tab/segmented-tab.iml" />
     </modules>
   </component>
 </project>

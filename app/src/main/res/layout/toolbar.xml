@@ -29,6 +29,7 @@
         android:layout_gravity="right"
         app:fabSize="normal" />
 
+    <!--
     <ImageButton
         android:id="@+id/log_out"
         android:layout_width="24dp"
@@ -38,5 +39,6 @@
         android:src="@drawable/ic_power_settings_new_white_24dp"
         android:layout_gravity="left"
         app:fabSize="normal" />
+    -->
 
 </android.support.v7.widget.Toolbar>

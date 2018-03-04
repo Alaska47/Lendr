@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'segmented-tab'
+
+    publishedGroupId = 'com.marlonmafra.android.widget'
+    libraryName = 'Android - SegmentedTab'
+    artifact = 'segmented-tab'
+
+    libraryDescription = 'An Android library that bring segmented control style to TabLayout'
+
+    siteUrl = 'https://github.com/pucamafra/android-segmentedtab'
+    gitUrl = 'https://github.com/pucamafra/android-segmentedtab.git'
+
+    libraryVersion = project.VERSION_NAME
+
+    developerId = 'pucamafra'
+    developerName = 'Marlon Mafra'
+    developerEmail = 'pucamafra@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionName project.VERSION_NAME
+        versionCode Integer.parseInt(project.VERSION_CODE)
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:$ANDROID_SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$ANDROID_SUPPORT_LIBRARY_VERSION"
+}
+
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
